@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello</p>
+    <p id="dip"></p>
+    <script>
+    let url = "https://api.weather.gov/gridpoints/OKX/35,35/forecast"
+    async function getData(){
+        let response = await fetch(url)
+       
+       // console.log(response)
+        let data = await response.json()
+        console.log(data.properties.periods[1].detailedForecast)
+        document.getElementById('dip').innerHTML = data.properties.periods[1].shortForecast
+    }
+    getData()
+    </script>
+</body>
+</html>
